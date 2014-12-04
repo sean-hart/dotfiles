@@ -37,3 +37,8 @@ export CLICOLOR=1
 # Set "ls" colors
 #export LSCOLORS=Gxfxcxdxbxegedabagacad
 export LSCOLORS=dxfxcxdxbxegedabagacad
+
+##############################################################################
+# 04. PATH
+##############################################################################
+PATH=~/bin:$PATH

@@ -21,7 +21,7 @@ set nocompatible         " get rid of Vi compatibility mode. SET FIRST!
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 02. Events                                                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
+"filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 
 " In Makefiles DO NOT use spaces instead of tabs
 autocmd FileType make setlocal noexpandtab
