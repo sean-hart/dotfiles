@@ -27,6 +27,7 @@ export EDITOR='/usr/bin/vim'
 
 ##############################################################################
 # 02. Aliases                                                                #
+alias fuck='sudo $(history -p \!\!)'
 ##############################################################################
 # Enable colors in "ls" command output
 alias ls="ls -Glah"
