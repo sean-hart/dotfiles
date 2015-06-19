@@ -16,6 +16,7 @@
 # Shell prompt
 #export PS1="\n\[\e[0;36m\]┌─[\[\e[0m\]\[\e[1;33m\]\u\[\e[0m\]\[\e[1;36m\] @ \[\e[0m\]\[\e[1;33m\]\h\[\e[0m\]\[\e[0;36m\]]─[\[\e[0m\]\[\e[1;34m\]\w\[\e[0m\]\[\e[0;36m\]]\[\e[0;36m\]─[\[\e[0m\]\[\e[0;31m\]\t\[\e[0m\]\[\e[0;36m\]]\[\e[0m\]\n\[\e[0;36m\]└─[\[\e[0m\]\[\e[1;37m\]\$\[\e[0m\]\[\e[0;36m\]]› \[\e[0m\]"
 source ~/dotfiles/bash_prompt
+#source ~/.dockerrc
 
 # If fortune is installed, run a fortune
 if [ -e /opt/local/bin/fortune ]; then
@@ -28,6 +29,8 @@ export EDITOR='/usr/bin/vim'
 ##############################################################################
 # 02. Aliases                                                                #
 alias fuck='sudo $(history -p \!\!)'
+alias docker-clean="docker rmi -f \$(docker images | grep -v REPOSITORY | awk '{print \$3}')"
+alias run-tests='python -m unittest discover'
 ##############################################################################
 # Enable colors in "ls" command output
 alias ls="ls -Glah"
@@ -45,3 +48,5 @@ export LSCOLORS=dxfxcxdxbxegedabagacad
 # 04. PATH
 ##############################################################################
 PATH=~/bin:$PATH
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
