@@ -50,3 +50,9 @@ export LSCOLORS=dxfxcxdxbxegedabagacad
 PATH=~/bin:$PATH
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+##############################################################################
+# 05. Activate python virtualenv
+##############################################################################
+
+. ~/env/bin/activate
