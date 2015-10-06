@@ -55,4 +55,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # 05. Activate python virtualenv
 ##############################################################################
 
-. ~/env/bin/activate
+if [[ -a  ~/env/bin/activate ]]
+  then
+    . ~/env/bin/activate
+fi
