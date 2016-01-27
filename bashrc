@@ -59,3 +59,12 @@ if [[ -a  ~/env/bin/activate ]]
   then
     . ~/env/bin/activate
 fi
+
+##############################################################################   
+# 06. Set go path                                                    
+##############################################################################
+
+if [[ -a ~/src/gostuff ]]
+  then
+    export GOPATH=$HOME/src/gostuff
+fi
