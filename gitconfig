@@ -17,4 +17,6 @@ bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xar
 bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
 [user]
 	name = Sean Hart
-	email = shart@blacklight.net
+	email = shart@pixsystem.com
+[core]
+	autocrlf = false
