@@ -31,6 +31,7 @@ export EDITOR='/usr/bin/vim'
 alias fuck='sudo $(history -p \!\!)'
 alias docker-clean="docker rmi -f \$(docker images | grep -v REPOSITORY | awk '{print \$3}')"
 alias run-tests='python -m unittest discover'
+alias run-amazon-linux='docker run -it 137112412989.dkr.ecr.us-west-2.amazonaws.com/amazonlinux:latest /bin/bash'
 ##############################################################################
 # Enable colors in "ls" command output
 alias ls="ls -Glah"
@@ -70,7 +71,7 @@ if [[ -a ~/src/gostuff ]]
 fi
 
 ##############################################################################
-# 07. aws autocomplete                                      
+# 07. aws autocomplete
 ##############################################################################
 if [[ -a /Users/shart/env/bin/aws_completer ]]
   then
@@ -81,3 +82,9 @@ fi
 # 08. rbenv
 ##############################################################################
 eval "$(rbenv init -)"
+
+##############################################################################
+# 09. Virtualbox Shutdowns
+##############################################################################
+
+alias vboxstop="vagrant global-status | grep virtualbox | cut -c 1-9 | while read line; do echo $line; vagrant destroy $line; done;"
