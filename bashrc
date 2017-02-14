@@ -32,6 +32,7 @@ alias fuck='sudo $(history -p \!\!)'
 alias docker-clean="docker rmi -f \$(docker images | grep -v REPOSITORY | awk '{print \$3}')"
 alias run-tests='python -m unittest discover'
 alias run-amazon-linux='docker run -it 137112412989.dkr.ecr.us-west-2.amazonaws.com/amazonlinux:latest /bin/bash'
+alias top='top -o cpu'
 ##############################################################################
 # Enable colors in "ls" command output
 alias ls="ls -Glah"
@@ -88,3 +89,13 @@ eval "$(rbenv init -)"
 ##############################################################################
 
 alias vboxstop="vagrant global-status | grep virtualbox | cut -c 1-9 | while read line; do echo $line; vagrant destroy $line; done;"
+
+##############################################################################
+# 10. Some auto-virtualenv stuff for python
+##############################################################################
+function cd {
+    builtin cd "$@"
+    if [ -d "venv" ] ; then
+        source venv/bin/activate
+    fi
+}
