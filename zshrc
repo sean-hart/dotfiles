@@ -78,3 +78,7 @@ if [ -f /usr/bin/vim ]; then
 fi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/shart/.sdkman"
+[[ -s "/Users/shart/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shart/.sdkman/bin/sdkman-init.sh"

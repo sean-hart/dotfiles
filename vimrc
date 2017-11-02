@@ -90,3 +90,20 @@ set expandtab             " use spaces instead of tabs
 
 " Prettify JSON files making them easier to read
 command PrettyJSON %!python -m json.tool
+
+set guifont=Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+" Powerline
+set rtp+=/Users/shart/.direnv/python-3.6.2/lib/python3.6/site-packages/powerline/bindings/vim
+"
+" " Always show statusline
+set laststatus=2
+"
+" " Use 256 colours (Use this setting only if your terminal supports 256
+" colours)
+set t_Co=256

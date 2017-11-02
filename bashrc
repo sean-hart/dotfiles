@@ -14,9 +14,14 @@
 # 01. General                                                                #
 ##############################################################################
 # Shell prompt
-#export PS1="\n\[\e[0;36m\]┌─[\[\e[0m\]\[\e[1;33m\]\u\[\e[0m\]\[\e[1;36m\] @ \[\e[0m\]\[\e[1;33m\]\h\[\e[0m\]\[\e[0;36m\]]─[\[\e[0m\]\[\e[1;34m\]\w\[\e[0m\]\[\e[0;36m\]]\[\e[0;36m\]─[\[\e[0m\]\[\e[0;31m\]\t\[\e[0m\]\[\e[0;36m\]]\[\e[0m\]\n\[\e[0;36m\]└─[\[\e[0m\]\[\e[1;37m\]\$\[\e[0m\]\[\e[0;36m\]]› \[\e[0m\]"
-source ~/dotfiles/bash_prompt
-#source ~/.dockerrc
+##### source ~/dotfiles/bash_prompt
+function _update_ps1() {
+    PS1="$(powerline-shell $?)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 # If fortune is installed, run a fortune
 if [ -e /opt/local/bin/fortune ]; then
@@ -26,13 +31,18 @@ fi
 
 export EDITOR='/usr/bin/vim'
 
+HISTFILESIZE=10000000
+
 ##############################################################################
 # 02. Aliases                                                                #
 alias fuck='sudo $(history -p \!\!)'
 alias docker-clean="docker rmi -f \$(docker images | grep -v REPOSITORY | awk '{print \$3}')"
+alias kill-containers='docker stop $(docker ps -a -q)'
 alias run-tests='python -m unittest discover'
 alias run-amazon-linux='docker run -it 137112412989.dkr.ecr.us-west-2.amazonaws.com/amazonlinux:latest /bin/bash'
 alias top='top -o cpu'
+alias chefdk='eval "$(chef shell-init bash)"'
+alias pyautotest='ptw --spool 1000 --onpass "notify \"Tests Passed\" \"PyAutoTest\""  --onfail "notify \"Tests FAILED\" \"PyAutoTest\""'
 ##############################################################################
 # Enable colors in "ls" command output
 alias ls="ls -Glah"
@@ -52,23 +62,25 @@ export LSCOLORS=dxfxcxdxbxegedabagacad
 PATH=~/bin:$PATH
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:./node_modules/.bin/" # add node modules to path
 
 ##############################################################################
 # 05. Activate python virtualenv
 ##############################################################################
 
-if [[ -a  ~/env/bin/activate ]]
-  then
-    . ~/env/bin/activate
-fi
+#if [[ -a  ~/env/bin/activate ]]
+#  then
+#    . ~/env/bin/activate
+#fi
 
 ##############################################################################
 # 06. Set go path
 ##############################################################################
 
-if [[ -a ~/src/gostuff ]]
+if [[ -a ~/go ]]
   then
-    export GOPATH=$HOME/src/gostuff
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOPATH/bin
 fi
 
 ##############################################################################
@@ -93,9 +105,15 @@ alias vboxstop="vagrant global-status | grep virtualbox | cut -c 1-9 | while rea
 ##############################################################################
 # 10. Some auto-virtualenv stuff for python
 ##############################################################################
-function cd {
-    builtin cd "$@"
-    if [ -d "venv" ] ; then
-        source venv/bin/activate
-    fi
-}
+
+eval "$(direnv hook bash)"
+
+##############################################################################
+# 11. Set Groovy home
+##############################################################################
+
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/shart/.sdkman"
+[[ -s "/Users/shart/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shart/.sdkman/bin/sdkman-init.sh"
