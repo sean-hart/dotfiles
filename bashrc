@@ -15,13 +15,19 @@
 ##############################################################################
 # Shell prompt
 ##### source ~/dotfiles/bash_prompt
-function _update_ps1() {
-    PS1="$(powerline-shell $?)"
-}
+#function _update_ps1() {
+#    PS1="$(powerline-shell $?)"
+#}
 
-if [ "$TERM" != "linux" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+#if [ "$TERM" != "linux" ]; then
+#    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+#fi
+PATH=$PATH:~/.direnv/python-3.6.2/bin/
+
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. ~/.direnv/./python-3.6.2/lib/python3.6/site-packages//powerline/bindings/bash/powerline.sh
 
 # If fortune is installed, run a fortune
 if [ -e /opt/local/bin/fortune ]; then
@@ -117,3 +123,15 @@ export GROOVY_HOME=/usr/local/opt/groovy/libexec
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/shart/.sdkman"
 [[ -s "/Users/shart/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shart/.sdkman/bin/sdkman-init.sh"
+
+
+# Powerline Config
+#/Library/Frameworks/Python.framework/Versions/3.6/bin/powerline-daemon -q
+#POWERLINE_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#cd ~
+#powerline-daemon -q
+#POWERLINE_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#. /Users/shart/.direnv/python-3.6.2/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+
