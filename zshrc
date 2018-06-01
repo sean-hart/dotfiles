@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/shart/.oh-my-zsh
+#export ZSH=/Users/shart/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -58,11 +58,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+#plugins=(
+#  git
+#)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -103,20 +103,20 @@ export LSCOLORS=dxfxcxdxbxegedabagacad
 PATH="~/bin:$PATH"
 export PATH
 
-source .zsh_private
+# source .zsh_private
 
 ### Chef
 
-alias chefdk='eval "$(chef shell-init zsh)"'
+# alias chefdk='eval "$(chef shell-init zsh)"'
 
 ### Powerline
-export PATH=$PATH:~/.direnv/./python-3.6.2/bin
-. ~/.direnv/./python-3.6.4/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+export PATH=$PATH:~/.direnv/./python-3.6.5/bin
+. ~/.direnv/./python-3.6.5/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 
 eval "$(direnv hook $0)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/shart/.sdkman"
-[[ -s "/Users/shart/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shart/.sdkman/bin/sdkman-init.sh"
+#export SDKMAN_DIR="/Users/shart/.sdkman"
+#[[ -s "/Users/shart/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shart/.sdkman/bin/sdkman-init.sh"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

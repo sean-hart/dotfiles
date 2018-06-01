@@ -99,7 +99,7 @@ command PrettyJSON %!python -m json.tool
 ""set term=xterm-256color
 ""set termencoding=utf-8
 " Powerline
-""set rtp+=/Users/shart/.direnv/python-3.6.2/lib/python3.6/site-packages/powerline/bindings/vim
+""set rtp+=/Users/shart/.direnv/python-3.6.5/lib/python3.6/site-packages/powerline/bindings/vim
 "
 " " Always show statusline
 set laststatus=2

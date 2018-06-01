@@ -22,12 +22,12 @@
 #if [ "$TERM" != "linux" ]; then
 #    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 #fi
-PATH=$PATH:~/.direnv/python-3.6.2/bin/
+PATH=$PATH:~/.direnv/python-3.6.5/bin/
 
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. ~/.direnv/./python-3.6.2/lib/python3.6/site-packages//powerline/bindings/bash/powerline.sh
+. ~/.direnv/./python-3.6.5/lib/python3.6/site-packages//powerline/bindings/bash/powerline.sh
 
 # If fortune is installed, run a fortune
 if [ -e /opt/local/bin/fortune ]; then
@@ -100,7 +100,7 @@ fi
 ##############################################################################
 # 08. rbenv
 ##############################################################################
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 ##############################################################################
 # 09. Virtualbox Shutdowns
