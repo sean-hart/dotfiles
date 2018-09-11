@@ -127,3 +127,10 @@ export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
+source ~/.iterm2_shell_integration.zsh
+
+function aws-login {
+    stash-okta --profile okta-awscli
+}
+
+alias aws='aws --profile okta-awscli'
