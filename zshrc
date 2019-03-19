@@ -121,16 +121,43 @@ eval "$(direnv hook $0)"
 
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export HISTSIZE=2000
+export HISTSIZE=2000000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_REDUCE_BLANKS
+
 
 source ~/.iterm2_shell_integration.zsh
 
 function aws-login {
-    stash-okta --profile okta-awscli
+    stash-okta -e --profile okta-awscli
 }
 
 alias aws='aws --profile okta-awscli'
+
+alias redis-start='docker run -p 6379:6379 redis'
+
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+
+function minienv {
+  eval $(minikube docker-env)
+}
+
+function unminienv {
+  eval $(minikube docker-env -u)
+}
+ export HOMEBREW_GITHUB_API_TOKEN="09bb1bdf495fa0365ea9ed9a13b15f9a5c69b075"
+# Lines configured by zsh-newuser-install
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/shart/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
