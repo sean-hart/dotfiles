@@ -152,7 +152,6 @@ function minienv {
 function unminienv {
   eval $(minikube docker-env -u)
 }
- export HOMEBREW_GITHUB_API_TOKEN="09bb1bdf495fa0365ea9ed9a13b15f9a5c69b075"
 # Lines configured by zsh-newuser-install
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
