@@ -22,12 +22,12 @@
 #if [ "$TERM" != "linux" ]; then
 #    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 #fi
-PATH=$PATH:~/.direnv/python-3.6.5/bin/
+#PATH=$PATH:~/.direnv/python-3.6.5/bin/
 
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. ~/.direnv/./python-3.6.5/lib/python3.6/site-packages//powerline/bindings/bash/powerline.sh
+#powerline-daemon -q
+#POWERLINE_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#. ~/.direnv/./python-3.6.5/lib/python3.6/site-packages//powerline/bindings/bash/powerline.sh
 
 # If fortune is installed, run a fortune
 if [ -e /opt/local/bin/fortune ]; then
@@ -112,7 +112,7 @@ alias vboxstop="vagrant global-status | grep virtualbox | cut -c 1-9 | while rea
 # 10. Some auto-virtualenv stuff for python
 ##############################################################################
 
-eval "$(direnv hook bash)"
+#eval "$(direnv hook bash)"
 
 ##############################################################################
 # 11. Set Groovy home

@@ -1,162 +1,149 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Explicitly configured $PATH variable
+PATH=/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin
 
-# Path to your oh-my-zsh installation.
-#export ZSH=/Users/shart/.oh-my-zsh
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+#ZSH_THEME="xiong-chiamiov-plus"
+ZSH_THEME="bullet-train"
+BULLETTRAIN_PROMPT_ORDER=(
+	status
+	dir
+	virtualenv
+	git
+	cmd_exec_time
+)
+BULLETTRAIN_VIRTUALENV_BG=black
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
+# Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
+# Comment this out to disable weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
+# Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
 
-# Uncomment the following line to disable auto-setting terminal title.
+# Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-#plugins=(
-#  git
-#)
+plugins=(git osx brew repo sudo knife vagrant bundler web-search)
 
-#source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias ls="ls -Glah"
-# CLI Colors
-export CLICOLOR=1
-# Set "ls" colors
-#export LSCOLORS=Gxfxcxdxbxegedabagacad
-export LSCOLORS=dxfxcxdxbxegedabagacad
-
-PATH="~/bin:$PATH"
-export PATH
-
-# source .zsh_private
-
-### Chef
-
-# alias chefdk='eval "$(chef shell-init zsh)"'
-
-### Powerline
-export PATH=$PATH:~/.direnv/./python-3.6.5/bin
-. ~/.direnv/./python-3.6.5/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
-
-eval "$(direnv hook $0)"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="/Users/shart/.sdkman"
-#[[ -s "/Users/shart/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shart/.sdkman/bin/sdkman-init.sh"
-
-#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-export HISTSIZE=2000000
-export HISTFILE="$HOME/.history"
-export SAVEHIST=$HISTSIZE
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
-setopt HIST_REDUCE_BLANKS
-
-
-source ~/.iterm2_shell_integration.zsh
-
-function aws-login {
-    stash-okta -e --profile okta-awscli
-}
-
-alias aws='aws --profile okta-awscli'
-
-alias redis-start='docker run -p 6379:6379 redis'
-
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
+# Put any proprietary or private functions/values in ~/.private, and this will source them
+if [ -f $HOME/.private ]; then
+  source $HOME/.private
 fi
 
-function minienv {
-  eval $(minikube docker-env)
+if [ -f $HOME/.profile ]; then
+  source $HOME/.profile  # Read Mac .profile, if present.
+fi
+
+# Shell Aliases
+## Git Aliases
+#alias gs='git status '
+#alias ga='git add '
+#alias gb='git branch '
+#alias gc='git commit'
+#alias gd='git diff'
+#alias go='git checkout '
+#alias gk='gitk --all&'
+#alias gx='gitx --all'
+#alias got='git '
+#alias get='git '
+
+## Vagrant Aliases
+#alias vag='vagrant'
+#alias vagup='vagrant up'
+#alias vagdestroy='vagrant destroy'
+#alias vagssh='vagrant ssh'
+#alias vaghalt='vagrant halt'
+
+## Miscellaneous Aliases
+#alias htop='sudo htop'
+
+# Shell Functions
+# qfind - used to quickly find files that contain a string in a directory
+qfind () {
+  find . -exec grep -l -s $1 {} \;
+  return 0
 }
 
-function unminienv {
-  eval $(minikube docker-env -u)
-}
-# Lines configured by zsh-newuser-install
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/Users/shart/.zshrc'
+# Custom exports
+## Set EDITOR to /usr/bin/vim if Vim is installed
+if [ -f /usr/bin/vim ]; then
+  export EDITOR=/usr/bin/vim
+fi
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/shart/.sdkman"
+[[ -s "/Users/shart/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shart/.sdkman/bin/sdkman-init.sh"
+export OKTA_USER=sean.hart@getcruise.com
+export SSH_KEY=/Users/sean.hart/.ssh/id_rsa
+export PATH=$PATH:/Users/sean.hart/Library/Python/2.7/bin
+
+
+
+#. /usr/local/opt/asdf/asdf.sh
+
+#. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source /Users/sean.hart/Library/Python/2.7/bin/aws_zsh_completer.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+export VAULT_ADDR=https://vault.secure.car:8200
+
+# alias vault-login='vault login -method=okta username=sean.hart passcode=$1'
+func vault-login(){
+	local yubi
+	if ((${+1})); then
+		vault login -method=okta username=$USER passcode=$1
+	else
+		vared -p 'Please activate your Yubi key: ' -c yubi
+		vault login -method=okta username=$USER passcode=$yubi
+	fi
+}
+
+#alias aws-login='aws-portal-cli --second-factor duo:push --username sean.hart --force'
+alias aws-login=aws-portal-cli
+
+export ATLAS_TOKEN='***REMOVED***'
+
+#export GOOGLE_APPLICATION_CREDENTIALS=/Users/sean.hart/.config/gcloud/application_default_credentials.json
+
+export PATH=/usr/local/go/bin:$PATH
+
+export PYTHONDONTWRITEBYTECODE=1
+
+
+# Git shortcuts
+alias git-remove-branches="git checkout master && git fetch --all && git rebase && git branch | grep -v "master" | xargs git branch -D"
+
+GOPRIVATE=github.robot.car/cruise
+
+func erg() {
+	echo "stuff:${1}"
+}
+
+eval "$(direnv hook zsh)"
+
