@@ -127,9 +127,7 @@ func vault-login(){
 #alias aws-login='aws-portal-cli --second-factor duo:push --username sean.hart --force'
 alias aws-login=aws-portal-cli
 
-export ATLAS_TOKEN='***REMOVED***'
 
-#export GOOGLE_APPLICATION_CREDENTIALS=/Users/sean.hart/.config/gcloud/application_default_credentials.json
 
 export PATH=/usr/local/go/bin:$PATH
 
